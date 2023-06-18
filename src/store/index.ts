@@ -25,7 +25,6 @@ export default new Vuex.Store({
       } else { state.tasks = [] }
     },
     createTask: (state, task:Itask) => {
-      console.log(state.tasks)
       state.tasks.unshift(task)
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },

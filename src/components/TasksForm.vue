@@ -53,8 +53,6 @@ export default Vue.extend({
           body: this.body
         })
       }
-      console.log(this.title)
-      console.log(this.body)
       this.title = ''
       this.body = ''
     }
