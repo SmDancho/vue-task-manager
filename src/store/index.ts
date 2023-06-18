@@ -23,6 +23,7 @@ export default new Vuex.Store({
       state.tasks = data
     },
     createTask: (state, task:Itask) => {
+      console.log(task)
       state.tasks.unshift(task)
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
