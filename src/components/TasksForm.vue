@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="addTask(title, body)">
+  <form class="form" @submit.prevent="addTask">
     <input type="text" placeholder="Заголовок" v-model="title" />
     <textarea placeholder="задача" v-model="body"></textarea>
     <button class="button" type="submit">Добавить</button>
@@ -34,7 +34,8 @@
 
 <script lang="ts">
 import { mapMutations } from 'vuex'
-export default {
+import Vue from 'vue'
+export default Vue.extend({
   data () {
     return {
       title: '',
@@ -44,15 +45,17 @@ export default {
 
   methods: {
     ...mapMutations(['createTask']),
-    addTask (title: string, body: string) {
-      if (title && body) {
+    addTask () {
+      if (this.title && this.body) {
         this.createTask({
           id: Date.now(),
-          title,
-          body
+          title: this.title,
+          body: this.body
         })
       }
+      this.title = ''
+      this.body = ''
     }
   }
-}
+})
 </script>
