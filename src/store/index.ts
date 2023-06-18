@@ -20,10 +20,12 @@ export default new Vuex.Store({
   mutations: {
     getData (state) {
       const data:Itask[] = JSON.parse(window.localStorage.getItem('tasks') as string)
-      state.tasks = data
+      if (data.length) {
+        state.tasks = data
+      } else { state.tasks = [] }
     },
     createTask: (state, task:Itask) => {
-      console.log(task)
+      console.log(state.tasks)
       state.tasks.unshift(task)
       localStorage.setItem('tasks', JSON.stringify(state.tasks))
     },
